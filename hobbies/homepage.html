@@ -1,44 +1,115 @@
+<!-- Manny Campbell and Natalie Tepedino -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find My Hobby</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- for Kalnia Font -->
+    <link href='https://fonts.googleapis.com/css?family=Kalnia' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header>
-        <h1>Find My Hobby</h1>
+
+    <!-- Navigation Bar-->
+    <div class="nav-container">
+        <nav class="navbar"> <!-- PLACE HOLDER -->
+            <ul>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#hobby-guides">Guides</a></li>
+                <li><a href="#trending-hobbies">Hobbies</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <img src="images/logo.webp" alt="Hobby Logo" class="logo">
+            <div class="header-text">
+                <h1>Discover Your Next Passion!</h1>
+                <p>Answer a few quick questions and match with hobbies you'll love!</p>
+            </div>
+            <button class="cta-button">Take The Quiz</button>
+        </div>
     </header>
 
-    <div class="content">              
-        <h2>Welcome to Find My Hobby</h2>
-        <p>
-            Welcome to Find My Hobby! We're excited to help you discover
-            new and exciting hobbies that match your interests and lifestyle.
-            Take our fun and easy questionnaire to get personalized hobby recommendations.
-            Whether you're looking to pick up a new skill, find a relaxing pastime, or meet like-minded people, we've got you covered.
-            Let's find your next favorite hobby together!
-        </p>
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <h3>Take the Quiz</h3>
+                <p>Answer a few questions to generate your hobby matches.</p>
+            </div>
+            <div class="step">
+                <h3>Get Your Results</h3>
+                <p>Find hobbies that fit your interests and skills.</p>
+            </div>
+            <div class="step">
+                <h3>Connect & Explore</h3>
+                <p>Discover guides, communities, and more.</p>
+            </div>
+        </div>
+    </section>
 
-        <h2>Let's Get to Know You!</h2>
-        <p>
-            We have designed a comprehensive questionnaire to help match you with hobbies that suit your interests and lifestyle.
-            By answering a series of questions about your preferences, time availability, and goals, we can provide you with personalized hobby recommendations.
+    <!-- Trending Hobbies Section -->
+    <section class="trending-hobbies">
+        <h2>Trending Hobbies Right Now</h2>
+        <div class="hobbies">
+            <div class="hobby">
+                <img src="images/plant.png" alt="Urban Gardening">
+                <h3>Urban Gardening</h3>
+                <p>Grow your own green oasis in any space.</p>
+            </div>
+            <div class="hobby">
+                <img src="images/art.png" alt="Urban Gardening">
+                <h3>Art & Illustration</h3>
+                <p>Enhance your creativity digitally.</p>
+            </div>
+            <div class="hobby">
+                <img src="images/mountain.png" alt="Urban Gardening">
+                <h3>Hiking Adventures</h3>
+                <p>Explore the great outdoors.</p>
+            </div>
+            <div class="hobby">
+                <img src="images/music.png" alt="Urban Gardening">
+                <h3>Music for Beginners</h3>
+                <p>Learn to master your favorite tunes.</p>
+            </div>
+            <div class="hobby">
+                <img src="images/computer.png" alt="Urban Gardening">
+                <h3>Coding for Fun</h3>
+                <p>Start your coding journey.</p>
+            </div>
+        </div>
+    </section>
 
-            <h3>Based on your responses, you will receive results categorized into three levels:</h3>
+    <!-- User Reviews Section -->
+    <section class="reviews">
+        <h2>What Our Users Are Saying</h2>
+        <div class="review-boxes">
+            <div class="review">
+                <p>"I never thought I'd be into painting, but this quiz led me to an amazing new hobby!"</p>
+                <p>⭐⭐⭐⭐⭐</p>
+            </div>
+            <div class="review">
+                <p>"This site made it so easy to find new hobbies to try. So much fun!"</p>
+                <p>⭐⭐⭐⭐⭐</p>
+            </div>
+        </div>
+    </section>
 
-            <ul>
-                <strong>Creative Arts</strong>: Painting, drawing, crafting, etc.<br>
-                <strong>Physical Activities</strong>: Sports, fitness, outdoor adventures, etc.<br>
-                <strong>Intellectual Pursuits</strong>: Reading, writing, puzzles, etc.<br>
-                <strong>Social Hobbies</strong>: Group activities, clubs, volunteering, etc.
-            </ul>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Find My Hobby. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
 
-        <a href="questionnaire.html">
-            <button class="homebttm">Let's get started and find the perfect hobby for you!</button>
-        </a>
-        </p>
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>
