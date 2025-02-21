@@ -14,4 +14,4 @@ Yadhira Marcos-Avila
 * Sasank Pagadala
 
 ## Build Instructions
-tbd
+download the files in their proper folder and run the homepage.html file
