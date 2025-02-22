@@ -1,0 +1,33 @@
+PBI Initial:
+  As a web app user, 
+  I want to enable dark mode 
+  so that I can reduce eye strain in low-light environments.
+
+  -  Dark mode should be accessible through settings
+  -  Should be consistent across the different pages
+  -  Should smoothly transition from light to dark and vice versa
+  -  UI elements should be optimized for readability in both Light and Dark Mode
+
+Acceptance Criteria:
+  -  Users can toggle Dark Mode on or off from the settings menu.
+  -  When enabled, the UI switches to a dark-themed color scheme.
+  -  The setting persists even after closing and reopening the app.
+  -  The app’s readability, contrast, and accessibility remain in Dark Mode.
+  -  There are no UI glitches or inconsistencies when switching between dark and light mode.
+
+******************************************************************************************************************
+
+PBI Initial:
+  As a new web app user, 
+  I want to have icons, symbols, and words on a webpage that are intuitive 
+  so that a new user like me can immediately know what the website has in store for me.
+
+  -  icons and symbols should match the theme of the website
+  -  icons and symbols should correspond with the color palette of the website
+  -  icons and symbols should be relevant and intuitive
+  -  when words are used for navigation they should be brief and should again be intuitive
+
+Acceptance Criteria:
+  -  users can easily know where the icons
+  -  users should be able to navigate the webpages easily
+  -  tooltips or info can be found if you hover over a navigation item (potentially)
