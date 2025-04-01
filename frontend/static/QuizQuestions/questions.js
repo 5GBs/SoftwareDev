@@ -1,7 +1,19 @@
+/*let hobbyData = [];
+let alerted = 0;
+
+function loadCSV() {
+    fetch("Hobby_Combinations.csv")
+        .then(response => response.text())
+        .then(csvText => {
+            hobbyData = Papa.parse(csvText, {header: true}).data;
+            console.log("CSV Loaded: ", hobbyData);
+        }).catch(error => console.error("Error loading CSV: ", error));
+}
+
 document.addEventListener("DOMContentLoaded", function(){
+    loadCSV();
     updateQuestion();
-    
-});
+});*/
 
 // All of the questions for the quiz
 const questions = [
@@ -117,6 +129,10 @@ function updateQuestion() {
         answer.innerHTML = "";
         queNum = queNum + 1;
 
+        if (queNum == 10) {
+            but.style.backgroundColor = "tan";
+            but.innerHTML = "Finish Quiz!";
+        }
         if (queNum > questions.length) {
             queNum = 10;
         }
@@ -126,6 +142,12 @@ function updateQuestion() {
         makeRadios(answers, queNum);
 
         console.log(userChoices);
+        document.querySelector(".nextQue").addEventListener("click", function() {
+            if (userChoices.every(choice => choice !== "") && alerted === 0) {  // Ensure all questions are answered
+                alert("Your recommended hobby is: " + getHobbyRecommendation());
+                alerted = 1;
+            }
+        });
     });
     
 }
@@ -139,11 +161,12 @@ function makeRadios(answers, queNum) {
         const labels = document.createElement("label");
 
         radios.setAttribute("type", "radio");
-        radios.setAttribute("id", "answer" + i);
+        radios.setAttribute("id", i);
         radios.setAttribute("name", "question" + queNum); 
         radios.value = i;
+        
 
-        labels.setAttribute("for", "answer" + i);
+        labels.setAttribute("for", i);
         labels.textContent = answers[queNum - 1][i];
 
         answerLoc.appendChild(radios);
@@ -155,13 +178,16 @@ function makeRadios(answers, queNum) {
 // See which radio button is checked and get the value associated with it for the results
 function checkRadios() {
     const radios = document.querySelectorAll("input[type='radio']");
-    let selected = null;
-
+    let labelText = "";
     for (const radio of radios) {
         if (radio.checked) {
-            selected = radio.value;
+            labelText = document.querySelector(`label[for="${radio.value}"]`).textContent;
             break;
         }
     }
-    return selected;
+    return labelText;
+}
+//TODO: SEE WHY NOT WORKINGGGG
+function getHobbyRecommendation() {
+    
 }
