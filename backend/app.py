@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 
-app = Flask(__name__)  # Create a Flask app instance
+app = Flask(__name__)
 
-@app.route('/')  # Define a route for the homepage
+@app.route('/')
 def home():
-    return "Hello, Flask!"  # Response when visiting '/'
+    return render_template('homepage.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)  # Run the Flask app
+    app.run(debug=True)
