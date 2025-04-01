@@ -1,15 +1,4 @@
-/*let hobbyData = [];
-let alerted = 0;
 
-function loadCSV() {
-    fetch("Hobby_Combinations.csv")
-        .then(response => response.text())
-        .then(csvText => {
-            hobbyData = Papa.parse(csvText, {header: true}).data;
-            console.log("CSV Loaded: ", hobbyData);
-        }).catch(error => console.error("Error loading CSV: ", error));
-}
-*/
 
 document.addEventListener("DOMContentLoaded", function(){
     updateQuestion();
@@ -19,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
 const questions = [
     "How do you prefer to spend your free time?",
     "Which of these activities sounds most appealing to you?",
-    "Do you prefer activities that are:",
+    "You prefer activities that are:",
     "How much time are you willing to dedicate to a new hobby each week?",
     "Do you prefer indoor or outdoor hobbies?",
     "Do you enjoy learning new skills or do you prefer hobbies you're already familiar with?",
@@ -104,7 +93,7 @@ const answers = [
 ];
 
 // Updated as the user presses the next question button and holds the index of their choice
-const userChoices = ["", "", "", "", "", "", "", "", "", ""];
+const userChoices = [0, 0, 0, 0, 0];
 
 // For updating the question, answer, and question number on the html page
 function updateQuestion() {
@@ -125,13 +114,21 @@ function updateQuestion() {
     makeRadios(answers, queNum);
     
     but.addEventListener("click", function() {
-        userChoices[queNum - 1] = checkRadios();
+        let textToCompare = checkRadios();
+        for (let i = 0; i < answers[queNum-1].length; i++) {
+            if (answers[queNum - 1][i] === textToCompare) {
+                userChoices[i]++;
+                break;
+            }
+        }
         answer.innerHTML = "";
         queNum = queNum + 1;
 
         if (queNum == 10) {
             but.style.backgroundColor = "tan";
             but.innerHTML = "Finish Quiz!";
+            but.addEventListener("click", displayResults);
+            
         }
         if (queNum > questions.length) {
             queNum = 10;
@@ -181,7 +178,33 @@ function checkRadios() {
     }
     return labelText;
 }
-//TODO: SEE WHY NOT WORKINGGGG
-function getHobbyRecommendation() {
-    
+
+function displayResults() {
+    let max = 0;
+    let index = 0;
+    let choice = "";
+    for (let i = 0; i < userChoices.length; i++) {
+        if (userChoices[i] > max) {
+            max = userChoices[i];
+            index = i;
+        }
+    }
+    switch (index) {
+        case 0:
+            choice = "Gardening";
+            break;
+        case 1:
+            choice = "Art";
+            break;
+        case 2:
+            choice = "Hiking";
+            break;
+        case 3:
+            choice = "Music";
+            break;
+        case 4:
+            choice = "Coding";
+            break;
+    }
+    console.log(`Your Hobby is ${choice}`);
 }
