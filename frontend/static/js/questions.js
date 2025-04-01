@@ -9,11 +9,11 @@ function loadCSV() {
             console.log("CSV Loaded: ", hobbyData);
         }).catch(error => console.error("Error loading CSV: ", error));
 }
+*/
 
 document.addEventListener("DOMContentLoaded", function(){
-    loadCSV();
     updateQuestion();
-});*/
+});
 
 // All of the questions for the quiz
 const questions = [
@@ -32,74 +32,74 @@ const questions = [
 // All of the answers for the quiz
 const answers = [
     [
-        "Outdoors, exploring nature", 
-        "Creating things with my hands", 
-        "Learning something new", 
-        "Playing or listening to music", 
-        "Socializing with friends or meeting new people", 
-        "Playing video games or board games", 
-        "Reading books, articles, or watching documentaries", 
-        "Staying active through sports or fitness", 
-        "Relaxing and unwinding at home"
+        "Gardening or spending time in nature", 
+        "Creating art, crafts, or DIY projects", 
+        "Exploring the outdoors through hiking or camping", 
+        "Playing or making music", 
+        "Solving puzzles, coding, or working with technology"
     ],
     [
-        "Painting or drawing", 
-        "Hiking or camping", 
-        "Playing an instrument", 
-        "Cooking or baking", 
-        "Coding or building apps", 
-        "Gardening", 
-        "Playing team sports (e.g., soccer, basketball, volleyball)", 
-        "Writing (stories, poetry, journaling)", 
-        "DIY crafts or home improvement"
+        "Growing and caring for plants", 
+        "Painting, drawing, or sculpting", 
+        "Hiking, camping, or outdoor adventures", 
+        "Playing an instrument or composing music", 
+        "Coding, programming, or designing apps"
     ],
     [
-        "Active and physical", 
-        "Calm and relaxing", 
-        "Creative and artistic", 
-        "Technical and logical", 
-        "Social and engaging", 
-        "Independent and solitary"
+        "Hands-on and connected to nature", 
+        "Expressive and creative", 
+        "Active and adventurous", 
+        "Musical and rhythmic",
+        "Logical and technical"
     ],
     [
         "Less than 1 hour", 
         "1-3 hours", 
         "4-6 hours", 
-        "7+ hours"
+        "7+ hours",
+        "As much time as possible!"
     ],
     [
-        "Indoor", 
-        "Outdoor", 
-        "No preference"
+        "Mostly outdoor, working with plants or nature", 
+        "Indoor, focused on artistic projects", 
+        "Outdoor, exploring and staying active",
+        "Indoor, playing or creating music",
+        "Indoor, working on coding or tech-related activities"
     ],
     [
-        "I love learning new skills!", 
-        "I prefer hobbies I already know.", 
-        "A mix of both."
+        "I love learning about gardening and plants!", 
+        "I enjoy improving my artistic skills.", 
+        "I want to explore new outdoor activities.",
+        "I’d love to learn a new instrument or musical technique.",
+        "I enjoy expanding my technical knowledge."
     ],
     [
-        "Free or low-cost hobbies", 
-        "Moderate spending (up to $100 initially)", 
-        "I'm willing to invest more if it's something I love"
+        "Free or low-cost, like home gardening", 
+        "Some investment for art supplies or tools", 
+        "Moderate spending for outdoor gear",
+        "Willing to invest in a musical instrument or lessons",
+        "Open to spending on tech and software tools"
     ],
     [
-        "Solo", 
-        "Group", 
-        "Both"
+        "Solo, tending to plants or a garden", 
+        "Either, I like working on art alone or in a class", 
+        "Group, I enjoy outdoor adventures with others",
+        "Either, I like playing music alone or in a band",
+        "Solo, I prefer working on coding or tech projects alone"
     ],
     [
-        "Relax and relieve stress", 
-        "Meet new people", 
-        "Get physically fit", 
-        "Learn a new skill or improve an existing one", 
-        "Make or create something tangible", 
-        "Earn extra income or turn it into a side hustle", 
-        "Just to have fun!"
+        "To relax and enjoy nature", 
+        "To express creativity and improve artistic skills", 
+        "To stay active and explore the outdoors", 
+        "To develop musical skills and enjoy playing music", 
+        "To improve problem-solving and technical abilities"
     ],
     [
-        "I prefer hobbies with a regular schedule (e.g., weekly classes, team practices).", 
-        "I like hobbies I can pick up whenever I have time.", 
-        "A mix of both works for me."
+        "I enjoy scheduled gardening routines", 
+        "I like setting aside specific times for creative work", 
+        "I prefer spontaneous outdoor adventures",
+        "I enjoy structured practice for learning an instrument",
+        "I like flexible time for coding or technical projects"
     ]
 ];
 
@@ -142,12 +142,6 @@ function updateQuestion() {
         makeRadios(answers, queNum);
 
         console.log(userChoices);
-        document.querySelector(".nextQue").addEventListener("click", function() {
-            if (userChoices.every(choice => choice !== "") && alerted === 0) {  // Ensure all questions are answered
-                alert("Your recommended hobby is: " + getHobbyRecommendation());
-                alerted = 1;
-            }
-        });
     });
     
 }
