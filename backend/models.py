@@ -19,7 +19,7 @@ class Posts(db.Model):
 
     post_id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
     picture = db.Column(db.LargeBinary, nullable=False)
     creation_date = db.Column(db.DateTime, nullable=False)
 
@@ -28,3 +28,28 @@ class Posts(db.Model):
 
     def __repr__(self):
         return f'Users({self.post_id}, {self.title}, {self.description}, {self.picture}, {self.creation_date})'
+    
+class Comments(db.Model):
+    __tablename__ = 'comments'
+
+    comment_id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text, nullable=False)
+    creation_date = db.Column(db.DateTime, nullable=False)
+
+    author_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    author = db.relationship('Users', backref='comments')
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.post_id'), nullable=False)
+    post = db.relationship('Posts', backref='comments')
+
+class Likes(db.Model):
+    __tablename__ = 'likes'
+
+    like_id = db.Column(db.Integer, primary_key=True)
+    creation_date = db.Column(db.DateTime, nullable=False)
+
+    author_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    author = db.relationship('Users', backref='likes')
+
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.post_id'), nullable=False)
+    post = db.relationship('Posts', backref='likes')

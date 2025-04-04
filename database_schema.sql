@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS posts (
     post_id SERIAL PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
     picture BYTEA NOT NULL,
     creation_date TIMESTAMP NOT NULL,
     author_id INT NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS posts (
 
 CREATE TABLE IF NOT EXISTS comments (
     comment_id SERIAL PRIMARY KEY,
-    text VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
     creation_date TIMESTAMP NOT NULL,
     author_id INT NOT NULL,
     post_id INT NOT NULL,
