@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+
+</head>
+<body>
+    <!-- Navigation Bar-->
+    <div class="nav-container">
+        <nav class="navbar"> <!-- PLACE HOLDER -->
+            <ul>
+                <li><a href="{{ url_for('homepage.html') }}">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <h2>Sign Up</h2>
+    </header>
+
+    <!-- Main -->
+    <main>
+        <form action="/signup" method="POST">
+            <label for="firstName">UserName: </label>
+            <input type="text" id="firstName" name="firstName" required>
+
+            <label for="email">Email Address: </label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" minlength="8" maxlength="64" required>
+
+            <input type="submit" value="Sign Up">
+        </form>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Find My Hobby. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
