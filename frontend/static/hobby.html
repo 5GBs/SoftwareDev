@@ -43,7 +43,8 @@
         <!-- Hobby Categories Section -->
         <h2>Discover Hobbies</h2>
         <div class="category-filter">
-            <button class="filter-button active" data-category="all">All Categories</button>
+            <!-- Removed "active" class -->
+            <button class="filter-button" data-category="all">All Categories</button>
             <button class="filter-button" data-category="urban-gardening">Urban Gardening</button>
             <button class="filter-button" data-category="art">Art & Illustration</button>
             <button class="filter-button" data-category="hiking">Hiking Adventures</button>
@@ -54,7 +55,7 @@
         <div class="hobby-categories">
             <!-- Urban Gardening -->
             <div class="category-card" data-category="urban-gardening">
-                <div class="category-image" style="background-image: url('images/urban-gardening.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Urban Gardening</h3>
                     <p class="category-description">Grow your own green oasis in any space.</p>
@@ -63,7 +64,7 @@
             
             <!-- Art & Illustration -->
             <div class="category-card" data-category="art">
-                <div class="category-image" style="background-image: url('images/art-illustration.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/art.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Art & Illustration</h3>
                     <p class="category-description">Enhance your creativity digitally.</p>
@@ -72,7 +73,7 @@
             
             <!-- Hiking Adventures -->
             <div class="category-card" data-category="hiking">
-                <div class="category-image" style="background-image: url('images/hiking.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/mountain.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Hiking Adventures</h3>
                     <p class="category-description">Explore the great outdoors.</p>
@@ -81,7 +82,7 @@
             
             <!-- Music for Beginners -->
             <div class="category-card" data-category="music">
-                <div class="category-image" style="background-image: url('images/music.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/music.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Music for Beginners</h3>
                     <p class="category-description">Learn to master your favorite tunes.</p>
@@ -90,7 +91,7 @@
             
             <!-- Coding for Fun -->
             <div class="category-card" data-category="coding">
-                <div class="category-image" style="background-image: url('images/coding.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/computer.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Coding for Fun</h3>
                     <p class="category-description">Start your coding journey.</p>
@@ -99,7 +100,7 @@
             
             <!-- Additional Urban Gardening cards -->
             <div class="category-card" data-category="urban-gardening">
-                <div class="category-image" style="background-image: url('images/container-gardening.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Container Gardening</h3>
                     <p class="category-description">Perfect for balconies and small spaces.</p>
@@ -107,7 +108,7 @@
             </div>
             
             <div class="category-card" data-category="urban-gardening">
-                <div class="category-image" style="background-image: url('images/vertical-gardening.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Vertical Gardening</h3>
                     <p class="category-description">Grow up instead of out.</p>
@@ -115,7 +116,7 @@
             </div>
             
             <div class="category-card" data-category="urban-gardening">
-                <div class="category-image" style="background-image: url('images/herb-gardening.jpg');"></div>
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
                 <div class="category-content">
                     <h3 class="category-title">Herb Gardening</h3>
                     <p class="category-description">Fresh herbs right from your kitchen.</p>
@@ -137,7 +138,7 @@
                 <div class="form-group">
                     <label for="post-category">Category</label>
                     <select id="post-category" class="form-control" required>
-                        <option value="">Select a category</option>
+                        <option value="">Select a Category</option>
                         <option value="urban-gardening">Urban Gardening</option>
                         <option value="art">Art & Illustration</option>
                         <option value="hiking">Hiking Adventures</option>
@@ -185,6 +186,6 @@
                 <h3 class="post-title">My Balcony Herb Garden Success</h3>
                 <div class="post-content">
                     <p>After months of trial and error, my balcony herb garden is finally thriving! I've managed to grow basil, mint, rosemary, and thyme in just a 3x5 foot space. Has anyone had success with growing cilantro in containers?</p>
-                    <img src="images/herb-garden.jpg" alt="Balcony herb garden" class="post-image">
+                    <img src="../images/plant.png" alt="Balcony herb garden" class="post-image">
                 </div>
                 <div class=

@@ -82,15 +82,18 @@ body {
 .cta-button {
     background-color: black;
     color: white;
-    font-family: 'Montserrat', bold;
+    font-family: 'kalnia', bold;
     padding: 10px 20px;
     border: none;
+    border-radius: 20px;
     cursor: pointer;
     margin-top: 10px;
 }
 
 .cta-button:hover {
-    background-color: #222;
+    background-color: black;
+    transform: scale(1.05);
+    
 }
 
 /* How It Works */
@@ -200,20 +203,26 @@ button:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Hobby Quiz */
+
+/* Answer Choices Styling */
+
 .nextQue {
-    font-family: 'Kalnia';
+    font-family: 'Kalnia', bold;
     background-color: white;
     color: black;
     border: 2px solid black;
     margin: 40px 20px;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 .nextQue:hover {
-    background-color: #555;
+    background-color: black;
     color: white;
+    transform: scale(1.05);
 }
 
-/* Additional styles specific to forum page */
 /* Main Content Styles */
 .main-content {
     padding: 30px;
@@ -221,7 +230,8 @@ button:hover {
     margin: 0 auto;
 }
 
-/* Posts Container (forum) */
+/* Additional styles specific to forum page */
+/* Posts Container */
 .posts-container {
     background-color: white;
     padding: 20px;
@@ -372,13 +382,14 @@ textarea.form-control {
     padding: 12px 25px;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-family: 'kalnia', bold;
     transition: background-color 0.3s;
 }
 
 .submit-button:hover {
-    background-color: #222;
+    background-color: black;
+    color: #EBDFCC;
+    transform: scale(1.05);
 }
 
 /* Login/Register Modals */
@@ -517,18 +528,20 @@ textarea.form-control {
 }
 
 .filter-button {
-    background-color: #f0f0f0;
+    background-color: white;
+    color: black;
     border: none;
     padding: 8px 15px;
     border-radius: 20px;
     cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'kalnia', bold;
     transition: all 0.3s;
 }
 
-.filter-button:hover, .filter-button.active {
+.filter-button:hover, .filter-button:active {
     background-color: black;
     color: white;
+    transform: scale(1.05);
 }
 
 /* Footer */
