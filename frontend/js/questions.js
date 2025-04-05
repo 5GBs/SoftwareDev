@@ -1,4 +1,15 @@
+/*let hobbyData = [];
+let alerted = 0;
 
+function loadCSV() {
+    fetch("Hobby_Combinations.csv")
+        .then(response => response.text())
+        .then(csvText => {
+            hobbyData = Papa.parse(csvText, {header: true}).data;
+            console.log("CSV Loaded: ", hobbyData);
+        }).catch(error => console.error("Error loading CSV: ", error));
+}
+*/
 
 document.addEventListener("DOMContentLoaded", function(){
     updateQuestion();
