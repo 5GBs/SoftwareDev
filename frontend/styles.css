@@ -207,6 +207,10 @@ button:hover {
 
 /* Answer Choices Styling */
 
+.answers {
+    padding: 20px;
+}
+
 .nextQue {
     font-family: 'Kalnia', bold;
     background-color: white;
