@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <!-- for Kalnia Font -->
+    <link href='https://fonts.googleapis.com/css?family=Kalnia' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="../frontend/styles/styles.css"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar-->
+    <div class="nav-container">
+        <nav class="navbar"> <!-- PLACE HOLDER -->
+            <ul>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#hobby-guides">Guides</a></li>
+                <li><a href="#trending-hobbies">Hobbies</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <div class="profile1">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert-info">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <h1>PROFILE PAGE</h1>
+    <div class="profile-info">
+        <p><strong>USERNAME:</strong> {{ user.username }}</p>
+        <p><strong>EMAIL:</strong> {{ user.email }}</p>
+    </div>
+
+    <form action="/users/delete" method="post">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this account? This action cannot be undone.');">
+        DELETE ACCOUNT
+        </button>
+    </form>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Find My Hobby. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+    
+</body>
+</html>
