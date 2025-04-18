@@ -1,6 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify, session
 import os
-from models import db
+from models import db, Users
 from dotenv import load_dotenv
 
 # load env variables
@@ -33,3 +33,20 @@ def signup():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
+# add hobby
+@app.post('/submit-hobby')
+def submit_hobby():
+    if 'user_id' not in session:
+        return jsonify({"error": "User not logged in"}), 403
+
+    data = request.get_json()
+    hobby = data.get('hobby')
+
+    user = Users.query.get(session['user_id'])
+    if user:
+        user.hobby = hobby
+        db.session.commit()
+        return jsonify({"message": "Hobby saved successfully."}), 200
+    else:
+        return jsonify({"error": "User not found"}), 404

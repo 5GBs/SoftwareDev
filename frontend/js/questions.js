@@ -138,7 +138,7 @@ function updateQuestion() {
         if (queNum == 10) {
             but.style.backgroundColor = "tan";
             but.innerHTML = "Finish Quiz!";
-            but.addEventListener("click", displayResults);
+            but.addEventListener("click", submitAndRedirect);
             
         }
         if (queNum > questions.length) {
@@ -217,5 +217,23 @@ function displayResults() {
             choice = "Coding";
             break;
     }
-    console.log(`Your Hobby is ${choice}`);
+    return choice;
+}
+
+function submitAndRedirect() {
+    let hobby = displayResults();
+
+    fetch("/submit-hobby", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ hobby })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        window.location.href = `Results-Events.html?hobby=${hobby}`;
+    })
+    .catch(err => console.error("Error submitting hobby:", err));
 }

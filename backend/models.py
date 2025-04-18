@@ -13,7 +13,7 @@ class Users(db.Model):
     creation_date = db.Column(db.DateTime, nullable=False)
 
     def __repr__(self):
-        return f'Users({self.user_id}, {self.username}, {self.email}, {self.password}, {self.creation_date})'
+        return f'Users({self.user_id}, {self.username}, {self.email}, {self.password}, {self.creation_date}, {self.hobby})'
 
 class Posts(db.Model):
     __tablename__ = 'posts'
