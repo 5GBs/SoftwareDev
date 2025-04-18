@@ -58,6 +58,38 @@ body {
     }
 }
 
+/* ADDED */
+/********************************************************/
+/* Authentication Buttons */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .auth-btn {
+    font-size: 14px;
+    color: white;
+    padding: 6px 12px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-btn:hover {
+    background-color: #555;
+  }
+  
+  .auth-btn.signup {
+    background-color: #ddd;
+    color: #222;
+    font-weight: bold;
+  }
+  
+  .auth-btn.signup:hover {
+    background-color: #bebebe;
+  }
+/********************************************************/
 
 /* Header Section */
 .header {
