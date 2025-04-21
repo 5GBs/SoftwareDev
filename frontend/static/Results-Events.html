@@ -12,7 +12,6 @@
         <link href='https://fonts.googleapis.com/css?family=Kalnia' rel='stylesheet'>
         <!-- for updating the questions and question numbers-->
         <script src="../js/questions.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
         <link rel="stylesheet" href="../styles.css">
     </head>
 
@@ -34,7 +33,25 @@
 
         <section>
             <!-- Get the hobby from the database -->
-             <h2 class="title">Results:</h2>
+             <h2 class="title">Your Hobby is {{ hobby }}</h2>
+        </section>
+
+        <section>
+            <h3>Here are some events going on related to {{ hobby }}:</h3>
+            {% if events %}
+                <ul>
+                    {% for event in events %}
+                        <li>
+                            <strong>{{ event.title }}</strong><br>
+                            When: {{ event.when }}<br>
+                            Where: {{ event.where }}<br>
+                            Description: {{ event.desc }}<br>
+                        </li>
+                </ul>
+            {% else %}
+                <p>No events were found, check back soon!</p>
+            {% endif %}
+                
         </section>
 
         <!-- Footer -->
