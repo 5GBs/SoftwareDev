@@ -233,7 +233,7 @@ function submitAndRedirect() {
     .then(res => res.json())
     .then(data => {
         console.log(data);
-        window.location.href = `Results-Events.html?hobby=${hobby}`;
+        window.location.href = `/results`;
     })
     .catch(err => console.error("Error submitting hobby:", err));
 }
