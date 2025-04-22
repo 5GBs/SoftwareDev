@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find My Hobby - Community Forum</title>
+    <!-- icon for tab bar -->
+    <link rel="icon" href="../images/Logo.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar-->
+    <div class="nav-container">
+        <nav class="navbar"> <!-- PLACE HOLDER -->
+            <ul> <!--Updated nav bar (4/1)-->
+                <!-- linking pages -->
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="hobby.html">Hobbies</a></li>
+                <li><a href="hobby-quiz.html">Quiz</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-content">
+            <img src="../images/logo.webp" alt="Find My Hobby Logo" class="logo">
+            <div class="header-text">
+                <h1>Community Forum</h1>
+                <p>Share your passions, discover new interests, and connect with fellow enthusiasts</p>
+            </div>
+            <button class="cta-button" id="explore-button">Explore Hobbies</button>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <!-- Hobby Categories Section -->
+        <h2>Discover Hobbies</h2>
+        <div class="category-filter">
+            <!-- Removed "active" class -->
+            <button class="filter-button" data-category="all">All Categories</button>
+            <button class="filter-button" data-category="urban-gardening">Urban Gardening</button>
+            <button class="filter-button" data-category="art">Art & Illustration</button>
+            <button class="filter-button" data-category="hiking">Hiking Adventures</button>
+            <button class="filter-button" data-category="music">Music for Beginners</button>
+            <button class="filter-button" data-category="coding">Coding for Fun</button>
+        </div>
+        
+        <div class="hobby-categories">
+            <!-- Urban Gardening -->
+            <div class="category-card" data-category="urban-gardening">
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Urban Gardening</h3>
+                    <p class="category-description">Grow your own green oasis in any space.</p>
+                </div>
+            </div>
+            
+            <!-- Art & Illustration -->
+            <div class="category-card" data-category="art">
+                <div class="category-image" style="background-image: url('../images/art.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Art & Illustration</h3>
+                    <p class="category-description">Enhance your creativity digitally.</p>
+                </div>
+            </div>
+            
+            <!-- Hiking Adventures -->
+            <div class="category-card" data-category="hiking">
+                <div class="category-image" style="background-image: url('../images/mountain.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Hiking Adventures</h3>
+                    <p class="category-description">Explore the great outdoors.</p>
+                </div>
+            </div>
+            
+            <!-- Music for Beginners -->
+            <div class="category-card" data-category="music">
+                <div class="category-image" style="background-image: url('../images/music.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Music for Beginners</h3>
+                    <p class="category-description">Learn to master your favorite tunes.</p>
+                </div>
+            </div>
+            
+            <!-- Coding for Fun -->
+            <div class="category-card" data-category="coding">
+                <div class="category-image" style="background-image: url('../images/computer.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Coding for Fun</h3>
+                    <p class="category-description">Start your coding journey.</p>
+                </div>
+            </div>
+            
+            <!-- Additional Urban Gardening cards -->
+            <div class="category-card" data-category="urban-gardening">
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Container Gardening</h3>
+                    <p class="category-description">Perfect for balconies and small spaces.</p>
+                </div>
+            </div>
+            
+            <div class="category-card" data-category="urban-gardening">
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Vertical Gardening</h3>
+                    <p class="category-description">Grow up instead of out.</p>
+                </div>
+            </div>
+            
+            <div class="category-card" data-category="urban-gardening">
+                <div class="category-image" style="background-image: url('../images/plant.png');"></div>
+                <div class="category-content">
+                    <h3 class="category-title">Herb Gardening</h3>
+                    <p class="category-description">Fresh herbs right from your kitchen.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Post Section (visible only for logged in users) -->
+        <div class="create-post" id="create-post-section">
+            <h2>Share Your Hobby Post</h2>
+            <div class="auth-message" id="post-auth-message">
+                Please log in to create a post
+            </div>
+            <form id="post-form">
+                <div class="form-group">
+                    <label for="post-title">Title</label>
+                    <input type="text" id="post-title" class="form-control" placeholder="Give your post a title" required>
+                </div>
+                <div class="form-group">
+                    <label for="post-category">Category</label>
+                    <select id="post-category" class="form-control" required>
+                        <option value="">Select a Category</option>
+                        <option value="urban-gardening">Urban Gardening</option>
+                        <option value="art">Art & Illustration</option>
+                        <option value="hiking">Hiking Adventures</option>
+                        <option value="music">Music for Beginners</option>
+                        <option value="coding">Coding for Fun</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="post-content">Content</label>
+                    <textarea id="post-content" class="form-control" placeholder="Share your thoughts, experiences, or questions about your hobby..." required></textarea>
+                </div>
+                <!-- New Image Upload Section -->
+                <div class="form-group">
+                    <label for="post-image">Add an Image (Optional)</label>
+                    <div class="image-upload" id="image-upload-area">
+                        <i class="fas fa-image"></i>
+                        <p class="upload-text">Click to upload an image or drag and drop</p>
+                        <input type="file" id="post-image" accept="image/*" style="display: none;">
+                    </div>
+                    <img id="image-preview" class="image-preview" alt="Preview">
+                </div>
+                <button type="submit" class="submit-button">Post</button>
+            </form>
+        </div>
+
+        <!-- Posts Container -->
+        <div class="posts-container">
+            <h2>Recent Posts</h2>
+            <div class="category-filter">
+                <button class="filter-button active" data-post-category="all">All Posts</button>
+                <button class="filter-button" data-post-category="urban-gardening">Urban Gardening</button>
+                <button class="filter-button" data-post-category="art">Art & Illustration</button>
+                <button class="filter-button" data-post-category="hiking">Hiking</button>
+                <button class="filter-button" data-post-category="music">Music</button>
+                <button class="filter-button" data-post-category="coding">Coding</button>
+            </div>
+            
+            <!-- Sample Post 1 - Urban Gardening -->
+            <div class="post" data-post-category="urban-gardening">
+                <div class="post-header">
+                    <span class="post-author">GreenThumb</span>
+                    <span class="post-date">March 30, 2025</span>
+                </div>
+                <h3 class="post-title">My Balcony Herb Garden Success</h3>
+                <div class="post-content">
+                    <p>After months of trial and error, my balcony herb garden is finally thriving! I've managed to grow basil, mint, rosemary, and thyme in just a 3x5 foot space. Has anyone had success with growing cilantro in containers?</p>
+                    <img src="../images/plant.png" alt="Balcony herb garden" class="post-image">
+                </div>
+                <div class=
