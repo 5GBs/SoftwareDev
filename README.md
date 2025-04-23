@@ -1,7 +1,7 @@
 # 5GBs
 
 ## Scrum Master
-Manny Campbell
+Natalie Tepedino
 
 ## Product Owner
 Yadhira Marcos-Avila
@@ -10,8 +10,8 @@ Yadhira Marcos-Avila
 * Adam Kerns
 * Leo Amromine
 * Michael Gohn
-* Natalie Tepedino
+* Manny Campbell
 * Sasank Pagadala
 
 ## Build Instructions
-download the files in their proper folder and run the homepage.html file
+Download the files, ensure the proper file structure is there, then run the homepage.html file
