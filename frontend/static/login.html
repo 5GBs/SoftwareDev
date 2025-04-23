@@ -12,32 +12,25 @@
 
 </head>
 <body>
-    <!-- Navigation Bar-->
-    <div class="nav-container">
-        <nav class="navbar"> <!-- PLACE HOLDER -->
-            <ul>
-                <li><a href="homepage.html">Home</a></li>
-            </ul>
-        </nav>
-    </div>
-
     <!-- Header Section -->
-    <header>
-        <h2>Sign Up</h2>
+    <header class="form-header">
+        <h1>Login</h1>
+        <a href="homepage.html"><img src="../images/logo.webp" alt="Hobby Logo" class="logo"></a>
     </header>
 
     <!-- Main -->
-    <main>
-        <form method="POST" action="/login">
+    <main class="form-main">
+        <h3>Welcome back! Please log in to continue.</h3>
+        <form method="POST" action="/login" class="form-items">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" required>
     
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password" required>
             
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="submit-button">Login</button>
         </form>
-        <div>NEW HERE ? <a href="signup.html"> <b>SIGN UP</b></a></div>
+        <div>First time hobby hunting? <a href="signup.html"> <b>Sign up here!</b></a></div>
     </main>
 
 
