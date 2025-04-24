@@ -44,11 +44,16 @@
             <li><a href="#about-us">About Us</a></li> <!-- GET THE ABOUT US AND CONTACT PAGES -->
             <li><a href="#contact">Contact</a></li>
         </ul>
-
+        {% if 'user_id' not in session %}
         <div class="auth-buttons">
             <a href="{{ url_for('login')}}" class="auth-btn login">Login</a>
             <a href="{{ url_for('signup')}}" class="auth-btn signup">Sign Up</a>
         </div>
+        {% else %}
+        <div class="auth-buttons">
+            <a href="{{ url_for('logout')}}" class="auth-btn login">Log Out</a>
+        </div>
+        {% endif %}
     </nav>
 </div>
 {% else %}

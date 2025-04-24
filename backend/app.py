@@ -87,7 +87,12 @@ def login():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('homepage'))
+
 # add hobby
 @app.route('/submit-hobby', methods=["POST"])
 def submit_hobby():
@@ -218,4 +223,3 @@ def results():
     }
     events = hobby_events.get(hobby, [])
     return render_template("Results-Events.html", hobby=hobby, events=events)
-     
