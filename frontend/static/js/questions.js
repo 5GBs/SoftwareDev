@@ -1,9 +1,19 @@
+/*let hobbyData = [];
+let alerted = 0;
+
+function loadCSV() {
+    fetch("Hobby_Combinations.csv")
+        .then(response => response.text())
+        .then(csvText => {
+            hobbyData = Papa.parse(csvText, {header: true}).data;
+            console.log("CSV Loaded: ", hobbyData);
+        }).catch(error => console.error("Error loading CSV: ", error));
+}
+*/
 
 document.addEventListener("DOMContentLoaded", function(){
     updateQuestion();
 });
-let selected = false;
-
 
 // All of the questions for the quiz
 const questions = [
@@ -105,8 +115,6 @@ function updateQuestion() {
 
     question.style.padding = "20px";
     question.style.fontSize = "24px";
-    but.disabled = true;
-    but.style.opacity = 0.25;
 
     let queNum = 1;
     title.innerHTML = "Question " + queNum + ":";
@@ -140,9 +148,6 @@ function updateQuestion() {
         title.innerHTML = "Question " + queNum + ":";
         question.innerHTML = questions[queNum - 1];
         makeRadios(answers, queNum);
-        but.disabled = true;
-        but.style.opacity = 0.25;
-        but.style.color = "grey";
 
         console.log(userChoices);
     });
@@ -162,11 +167,6 @@ function makeRadios(answers, queNum) {
         radios.setAttribute("name", "question" + queNum); 
         radios.value = i;
         
-        radios.addEventListener("click", function() {
-            const nextButton = document.querySelector(".nextQue");
-            nextButton.disabled = false;
-            nextButton.style.opacity = 1;
-        });
 
         labels.setAttribute("for", i);
         labels.textContent = answers[queNum - 1][i];
@@ -174,7 +174,6 @@ function makeRadios(answers, queNum) {
         answerLoc.appendChild(radios);
         answerLoc.appendChild(labels);
         answerLoc.appendChild(document.createElement("br"));
-        
     }
 }
 
