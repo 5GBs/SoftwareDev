@@ -1,12 +1,44 @@
 <!-- Manny Campbell and Natalie Tepedino -->
+<!DOCTYPE html>
+<html lang="en">
 
-        {% include 'navbar.html' %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Find My Hobby</title>
+        <!-- icon for tab bar -->
+        <link rel="icon" href="../images/Logo.webp">
+        <!-- for Kalnia Font -->
+        <link href='https://fonts.googleapis.com/css?family=Kalnia' rel='stylesheet'>
+        <link rel="stylesheet" href="../styles.css">
+    </head>
+
+    <body>
+
+        <!-- Navigation Bar-->
+        <div class="nav-container">
+            <nav class="navbar"> <!-- PLACE HOLDER -->
+                <ul> <!--Updated nav bar (4/1)-->
+                    <!-- linking pages -->
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="hobby.html">Hobbies</a></li>
+                    <li><a href="hobby-quiz.html">Quiz</a></li>
+                    <li><a href="#about-us">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <!-- added login and signup buttons -->
+                <div class="auth-buttons">
+                    <a href="login.html" class="auth-btn login">Login</a>
+                    <a href="signup.html" class="auth-btn signup">Sign Up</a>
+                </div>
+            </nav>
+        </div>
 
         <!-- Header Section -->
         <header class="header">
             <div class="header-content">
                 <h1 class="head-title">Find My Hobby</h1>
-                <img src="{{ url_for('static', filename='images/Logo.webp') }}" alt="Hobby Logo" class="logo">
+                <img src="../images/logo.webp" alt="Hobby Logo" class="logo">
                 <div class="header-text">
                     <h1>Discover Your Next Passion!</h1>
                     <p>Answer a few quick questions and match with hobbies you'll love!</p>

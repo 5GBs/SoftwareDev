@@ -5,7 +5,7 @@
 A Flask-and-PostgreSQL-based web app that recommends hobbies based on quiz results.
 
 ## Scrum Master
-Manny Campbell
+Natalie Tepedino
 
 ## Product Owner
 Yadhira Marcos-Avila
@@ -14,7 +14,7 @@ Yadhira Marcos-Avila
 * Adam Kerns
 * Leo Amromine
 * Michael Gohn
-* Natalie Tepedino
+* Manny Campbell
 * Sasank Pagadala
 
 ## Build Instructions
