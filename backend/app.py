@@ -18,9 +18,9 @@ app = Flask(
 
 # configure db connection
 app.config['SQLALCHEMY_DATABASE_URI'] = \
-f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
+    f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = '12345'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # initialize app
 db.init_app(app)

@@ -1,6 +1,7 @@
 from werkzeug.security import check_password_hash
 from backend.models import db, Users, Posts, Comments, Likes
 import re
+from datetime import datetime
 
 def create_user(username, email, password_hash):
     if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
@@ -11,7 +12,7 @@ def create_user(username, email, password_hash):
     if Users.query.filter_by(email=email).first():
         return 'Email already in use'
 
-    from datetime import datetime
+    
     new_user = Users(username=username, email=email, password=password_hash, hobby="", creation_date=datetime.now())
     db.session.add(new_user)
     db.session.commit()
