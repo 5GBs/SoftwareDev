@@ -1,0 +1,67 @@
+{% if page == 'quiz'%}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Find My Hobby</title>
+        <!-- icon for tab bar -->
+        <link rel="icon" href="{{ url_for('static', filename='images/Logo.webp') }}">
+        <!-- for Kalnia Font -->
+        <link href='https://fonts.googleapis.com/css?family=Kalnia' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <!-- for updating the questions and question numbers-->
+        <script src="{{ url_for('static', filename='js/questions.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+{% else %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find My Hobby - Community Forum</title>
+    <!-- icon for tab bar -->
+    <link rel="icon" href="{{ url_for('static', filename='images/Logo.webp') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Kalnia&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+{% endif %}
+
+
+{% if page == 'home'%}
+<div class="nav-container">
+    <nav class="navbar"> <!-- PLACE HOLDER -->
+        <ul> <!--Updated nav bar (4/1)-->
+            <!-- linking pages -->
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hobby') }}">Hobbies</a></li>
+            <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
+            <li><a href="#about-us">About Us</a></li> <!-- GET THE ABOUT US AND CONTACT PAGES -->
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="auth-buttons">
+            <a href="{{ url_for('login')}}" class="auth-btn login">Login</a>
+            <a href="{{ url_for('signup')}}" class="auth-btn signup">Sign Up</a>
+        </div>
+    </nav>
+</div>
+{% else %}
+<div class="nav-container">
+    <nav class="navbar"> <!-- PLACE HOLDER -->
+        <ul> <!--Updated nav bar (4/1)-->
+            <!-- linking pages -->
+            <li><a href="{{ url_for('homepage') }}">Home</a></li>
+            <li><a href="{{ url_for('hobby') }}">Hobbies</a></li>
+            <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
+            <li><a href="#about-us">About Us</a></li> <!-- GET THE ABOUT US AND CONTACT PAGES -->
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+{% endif %}

@@ -1,0 +1,35 @@
+
+{% include 'navbar.html' %}
+    <!-- Header Section -->
+    <header class="form-header">
+        <h1>Sign Up</h1>
+        <a href="{{ url_for('homepage') }}"><img src="{{ url_for('static', filename='images/Logo.webp') }}" alt="Hobby Logo" class="logo"></a>
+    </header>
+
+    <!-- Main -->
+    <main class="form-main">
+        <h3>Join us and discover your next favorite hobby!</h3>
+        <form action="{{ url_for('signup') }}" method="POST" class="form-items">
+            <label for="firstName" class="form-label">Username: </label>
+            <input type="text" id="firstName" name="firstName" class="form-control" required>
+
+            <label for="email" class="form-label">Email Address: </label>
+            <input type="email" id="email" name="email" class="form-control" required>
+
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" name="password" minlength="8" maxlength="64" class="form-control" required>
+
+            <input type="submit" class="submit-button" value="Sign Up">
+        </form>
+        <div>Hobby hunting again? <a href="{{ url_for('login')}}"> <b>Log in here!</b></a></div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Find My Hobby. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>

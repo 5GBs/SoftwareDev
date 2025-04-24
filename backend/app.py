@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from backend.user_util import (
+    create_user, check_user_credentials
+)
 import os
-from models import db, Users
+from backend.models import db, Users
 from dotenv import load_dotenv
 
 # load env variables
@@ -9,14 +12,15 @@ load_dotenv()
 # create new app
 app = Flask(
     __name__,
-    static_folder='../frontend',
-    template_folder='../templates'
+    static_folder='../frontend/static',
+    template_folder='../frontend/templates'
 )
 
 # configure db connection
 app.config['SQLALCHEMY_DATABASE_URI'] = \
 f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = '12345'
 
 # initialize app
 db.init_app(app)
@@ -24,18 +28,68 @@ db.init_app(app)
 # homepage
 @app.get('/')
 def homepage():
-    return render_template('homepage.html')
+    return render_template('homepage.html', page='home')
+
+# hobby
+@app.get('/hobby')
+def hobby():
+    return render_template('hobby.html', page='hobby')
+
+# quiz
+@app.get('/quiz')
+def quiz():
+    if 'user_id' not in session:
+        return render_template('signup.html', page='signup')
+    
+    return render_template('hobby-quiz.html', page='quiz')
 
 # signup
-@app.get('/signup')
+@app.route('/signup', methods=["GET", "POST"])
 def signup():
-    return render_template('signup.html')
+    if request.method == "POST":
+        firstName = request.form["firstName"]
+        email = request.form["email"]
+        password = request.form["password"]
+        
+        if not firstName or not email or not password:
+            return render_template('signup.html', error="All fields are required")
+        
+        from werkzeug.security import generate_password_hash
+        password_hash = generate_password_hash(password)
+        
+        print(f"Username: {firstName}, Email: {email}") #DEBUGGING
+        
+        result = create_user(firstName, email, password_hash)
+        print(f"Result: {result}") #DEBUGGING
+
+        if result == "Success" :
+            return redirect(url_for("login"))
+        else:
+            return render_template('signup.html', error=result)
+        
+    return render_template('signup.html', page='signup')
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+
+        user = check_user_credentials(email, password)
+        if user:
+            session["user_id"] = user.user_id
+            return redirect(url_for("homepage"))  
+        else:
+            return render_template("login.html", error="Invalid credentials")
+
+    return render_template("login.html", page='login')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
     
 # add hobby
-@app.post('/submit-hobby')
+@app.route('/submit-hobby', methods=["POST"])
 def submit_hobby():
     if 'user_id' not in session:
         return jsonify({"error": "User not logged in"}), 403
@@ -53,7 +107,7 @@ def submit_hobby():
         return jsonify({"error": "User not found"}), 404
     
 # routing and handling the results page
-@app.post('/results')
+@app.route('/results', methods=["GET"])
 def results():
     if 'user_id' not in session:
         return jsonify({"error": "User not logged in"}), 403
