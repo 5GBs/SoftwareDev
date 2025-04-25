@@ -5,6 +5,9 @@
 A Flask-and-PostgreSQL-based web app that recommends hobbies based on quiz results.
 
 ## Scrum Master
+Natalie Tepedino
+
+## Assistant Scrum Master
 Manny Campbell
 
 ## Product Owner
@@ -14,7 +17,6 @@ Yadhira Marcos-Avila
 * Adam Kerns
 * Leo Amromine
 * Michael Gohn
-* Natalie Tepedino
 * Sasank Pagadala
 
 ## Build Instructions
@@ -25,10 +27,11 @@ Yadhira Marcos-Avila
    ```
 
 2. **Navigate to the Repo**
+   ```bash
+   Navigate to the location of your file downloaded in step 1 (most likely titled 'SoftwareDev')
+   ```
 
-   - Navigate to the location of your file downloaded in **step 1** (most likely titled "**SoftwareDev**")
-
-3. **Create and Activate a Virtual Environment**
+4. **Create and Activate a Virtual Environment**
     ```bash
     # For MacOS/Linux:
     python3 -m venv venv
@@ -39,27 +42,27 @@ Yadhira Marcos-Avila
     venv\Scripts\activate
     ```
 
-4. **Install Dependencies**
+5. **Install Dependencies**
     ```bash
     pip install -r requirements.txt
     ```
 
-5. **Configure Environment Variables**
+6. **Configure Environment Variables**
     ```bash
     # Create a new env file within the current folder 
     # (should still be SoftwareDev) by running the above command:
-       cp backend/.env.example .env
+    cp backend/.env.example .env
 
     # You will need to edit this file (.env) to create a new database.
     ```
 
-6. **Install Homebreq (if not installed)**
+7. **Install Homebreq (if not installed)**
     ```bash
     # Open terminal and install
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
    ``` 
 
-7. **Make sure PostgreSQL is running**
+8. **Make sure PostgreSQL is running**
    ```bash
    # Install PostgreSQ7 if not installed
       # For macOS:
@@ -78,7 +81,7 @@ Yadhira Marcos-Avila
       brew services start postgresql
       ```
 
- 8. **Create the database**
+ 9. **Create the database**
      ```bash
       # Create the database (schema inside)
       createdb -U postgres findmyhobby
@@ -96,7 +99,7 @@ Yadhira Marcos-Avila
       ```
 
 
-9. **Finally, Run the App!**
+10. **Finally, Run the App!**
     ```bash
     # Visit the localhost given in the terminal
     # (Most likely 'http://127.0.0.1:5000')
