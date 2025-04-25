@@ -53,6 +53,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Please fill out all required fields');
                 return;
             }
+
+            // Add validation for image (make it mandatory)
+            if (!postImage) {
+                document.getElementById('image-error').style.display = 'block';
+                document.getElementById('image-upload-area').style.border = '2px solid red';
+                return;
+            } else {
+                document.getElementById('image-error').style.display = 'none';
+                document.getElementById('image-upload-area').style.border = '';
+            }
             
             // Create FormData object to handle file upload
             const formData = new FormData();

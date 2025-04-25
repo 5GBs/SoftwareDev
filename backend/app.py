@@ -38,6 +38,8 @@ def homepage():
 # hobby
 @app.get('/hobby')
 def hobby():
+    if 'user_id' not in session:
+        return render_template('signup.html', page='signup')
     return render_template('hobby.html', page='hobby')
 
 # quiz
@@ -47,6 +49,11 @@ def quiz():
         return render_template('signup.html', page='signup')
     
     return render_template('hobby-quiz.html', page='quiz')
+
+# about-us
+@app.get('/about-us')
+def about_us():
+    return render_template('about-us.html', page='about-us')
 
 # signup
 @app.route('/signup', methods=["GET", "POST"])
