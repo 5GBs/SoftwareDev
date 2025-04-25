@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch posts from backend
     const fetchPosts = async () => {
         try {
-            const response = await fetch('/get-posts');
+            const response = await fetch('/forum/get-posts');
             
             if (!response.ok) {
                 throw new Error('Failed to fetch posts');
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle like button click
     const handleLike = async (postId, button) => {
         try {
-            const response = await fetch('/like-post', {
+            const response = await fetch('/forum/like-post', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch comments for a post
     const fetchComments = async (postId) => {
         try {
-            const response = await fetch(`/get-comments/${postId}`);
+            const response = await fetch(`/forum/get-comments/${postId}`);
             
             if (!response.ok) {
                 throw new Error('Failed to fetch comments');
@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         try {
-            const response = await fetch('/submit-comment', {
+            const response = await fetch('/forum/submit-comment', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
