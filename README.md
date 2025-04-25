@@ -74,8 +74,8 @@ Yadhira Marcos-Avila
       sudo systemctl start postgresql
 
       # For Windows:
-      # Download and install PostgreSQL from the following
-      linkhttps://www.postgresql.org/download/
+      # Download and install PostgreSQL from the following link
+      https://www.postgresql.org/download/
    
       # Start the PostgreSQL service using brew
       brew services start postgresql
