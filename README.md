@@ -22,31 +22,84 @@ Yadhira Marcos-Avila
 1. **Clone the repo**
    ```bash
    git clone https://github.com/5GBs/SoftwareDev.git
+   ```
 
 2. **Navigate to the Repo**
-    Wherever you downloaded the files navigate to the main folder (most likely titled "SoftwareDev")
+
+   - Navigate to the location of your file downloaded in **step 1** (most likely titled "**SoftwareDev**")
 
 3. **Create and Activate a Virtual Environment**
     ```bash
+    # For MacOS/Linux:
     python3 -m venv venv
-    source venv/bin/activate    # for MacOS/Linux
-    venv\Scripts\activate # for Windows
+    source venv/bin/activate
+
+    # For Windows:
+    python -m venv venv
+    venv\Scripts\activate
+    ```
 
 4. **Install Dependencies**
     ```bash
     pip install -r requirements.txt
+    ```
 
-5. **Configure Environment Variables and Edit the .env file**
+5. **Configure Environment Variables**
     ```bash
-    cp .env.example .env 
+    # Create a new env file within the current folder 
+    # (should still be SoftwareDev) by running the above command:
+       cp backend/.env.example .env
 
-    You will need to edit this file (.env) to create a new database
+    # You will need to edit this file (.env) to create a new database.
+    ```
 
-6. **Make sure PostgreSQL is running and the created database exists**
-
-7. **Finally, Run the App!**
+6. **Install Homebreq (if not installed)**
     ```bash
+    # Open terminal and install
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ``` 
+
+7. **Make sure PostgreSQL is running**
+   ```bash
+   # Install PostgreSQ7 if not installed
+      # For macOS:
+      brew install postgresql
+      
+      #for Linux:
+      sudo apt update
+      sudo apt install postgresql postgresql-contrib
+      sudo systemctl start postgresql
+
+      # For Windows:
+      # Download and install PostgreSQL from the following
+      linkhttps://www.postgresql.org/download/
+   
+      # Start the PostgreSQL service using brew
+      brew services start postgresql
+      ```
+
+ 8. **Create the database**
+     ```bash
+      # Create the database (schema inside)
+      createdb -U postgres findmyhobby
+
+      # If creatb is not available:
+      psql -U postgres
+      CREATE DATABASE findmyhobby;
+      \q
+      
+      # Verify the database
+      psql -U postgres -d findmyhobby
+
+      # List the tables within the database
+      \dt
+      ```
+
+
+9. **Finally, Run the App!**
+    ```bash
+    # Visit the localhost given in the terminal
+    # (Most likely 'http://127.0.0.1:5000')
     flask run
-
-    Visit the localhost given in the terminal (Most likely 'http://127.0.0.1:5000')
+    ```
 
