@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from .forum_routes import forum_routes
 from backend.user_util import (
     create_user, check_user_credentials
 )
@@ -16,11 +17,15 @@ app = Flask(
     template_folder='../frontend/templates'
 )
 
+# register blueprint routes
+app.register_blueprint(forum_routes, url_prefix='/forum')
+
+
 # configure db connection
 app.config['SQLALCHEMY_DATABASE_URI'] = \
-    f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
+f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = '12345'
 
 # initialize app
 db.init_app(app)
@@ -42,6 +47,11 @@ def quiz():
         return render_template('signup.html', page='signup')
     
     return render_template('hobby-quiz.html', page='quiz')
+
+# about-us
+@app.get('/about-us')
+def about_us():
+    return render_template('about-us.html', page='about-us')
 
 # signup
 @app.route('/signup', methods=["GET", "POST"])
@@ -84,15 +94,18 @@ def login():
 
     return render_template("login.html", page='login')
 
+@app.route('/logout')
+def logout():
+    # Clear the user session data
+    session.pop('user_id', None)
+    session.pop('hobby', None)
+
+    return redirect(url_for('homepage'))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('homepage'))
-
+    
 # add hobby
 @app.route('/submit-hobby', methods=["POST"])
 def submit_hobby():
@@ -223,3 +236,4 @@ def results():
     }
     events = hobby_events.get(hobby, [])
     return render_template("Results-Events.html", hobby=hobby, events=events)
+     
