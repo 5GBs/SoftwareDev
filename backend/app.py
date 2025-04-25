@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for
+from .forum_routes import forum_routes
 from backend.user_util import (
     create_user, check_user_credentials
 )
@@ -15,6 +16,10 @@ app = Flask(
     static_folder='../frontend/static',
     template_folder='../frontend/templates'
 )
+
+# register blueprint routes
+app.register_blueprint(forum_routes, url_prefix='/forum')
+
 
 # configure db connection
 app.config['SQLALCHEMY_DATABASE_URI'] = \
@@ -83,6 +88,14 @@ def login():
             return render_template("login.html", error="Invalid credentials")
 
     return render_template("login.html", page='login')
+
+@app.route('/logout')
+def logout():
+    # Clear the user session data
+    session.pop('user_id', None)
+    session.pop('hobby', None)
+
+    return redirect(url_for('homepage'))
 
 
 if __name__ == '__main__':

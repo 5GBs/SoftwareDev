@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             try {
-                const response = await fetch('/submit-post', {
+                const response = await fetch('/forum/submit-post', {
                     method: 'POST',
                     body: formData
                 });
