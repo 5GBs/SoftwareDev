@@ -95,7 +95,7 @@ Yadhira Marcos-Avila
       psql -U postgres -d findmyhobby
 
       # List the tables within the database
-      \dt
+      \dt  
       ```
 
 

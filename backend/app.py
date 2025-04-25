@@ -3,10 +3,8 @@ from backend.user_util import (
     create_user, check_user_credentials
 )
 import os
-from backend.models import db, Users, Posts, Comments, Likes
+from backend.models import db, Users
 from dotenv import load_dotenv
-from datetime import datetime
-import base64
 
 # load env variables
 load_dotenv()
@@ -20,9 +18,9 @@ app = Flask(
 
 # configure db connection
 app.config['SQLALCHEMY_DATABASE_URI'] = \
-    f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
+f'postgresql://{os.getenv("DB_USER")}:{os.getenv("DB_PASS")}@{os.getenv("DB_HOST")}:{os.getenv("DB_PORT")}/{os.getenv("DB_NAME")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = '12345'
 
 # initialize app
 db.init_app(app)
@@ -36,11 +34,6 @@ def homepage():
 @app.get('/hobby')
 def hobby():
     return render_template('hobby.html', page='hobby')
-
-# forum page
-@app.get('/forum')
-def forum():
-    return render_template('forum.html', page='forum')
 
 # quiz
 @app.get('/quiz')
@@ -85,18 +78,16 @@ def login():
         user = check_user_credentials(email, password)
         if user:
             session["user_id"] = user.user_id
-            session["username"] = user.username
             return redirect(url_for("homepage"))  
         else:
             return render_template("login.html", error="Invalid credentials")
 
     return render_template("login.html", page='login')
 
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('homepage'))
 
+if __name__ == '__main__':
+    app.run(debug=True)
+    
 # add hobby
 @app.route('/submit-hobby', methods=["POST"])
 def submit_hobby():
@@ -158,7 +149,7 @@ def results():
                 "desc": "Explore the city while sketching scenes, buildings, and people."
             },
             {
-                "title": "Beginner's Acrylic Painting Class",
+                "title": "Beginner’s Acrylic Painting Class",
                 "when": "April 10, 5 PM – 7 PM",
                 "where": "Local Arts Center",
                 "desc": "Learn painting techniques with step-by-step guidance."
@@ -172,7 +163,7 @@ def results():
                 "desc": "A guided 3-mile hike with scenic sunset views and good company."
             },
             {
-                "title": "Beginner's Birdwatching Walk",
+                "title": "Beginner’s Birdwatching Walk",
                 "when": "April 13, 8 AM",
                 "where": "Willow Lake Nature Preserve",
                 "desc": "Bring binoculars and learn to identify local bird species with a park ranger."
@@ -227,3 +218,4 @@ def results():
     }
     events = hobby_events.get(hobby, [])
     return render_template("Results-Events.html", hobby=hobby, events=events)
+     
