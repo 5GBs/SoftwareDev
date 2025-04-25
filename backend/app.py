@@ -48,6 +48,11 @@ def quiz():
     
     return render_template('hobby-quiz.html', page='quiz')
 
+# about-us
+@app.get('/about-us')
+def about_us():
+    return render_template('about-us.html', page='about-us')
+
 # signup
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
