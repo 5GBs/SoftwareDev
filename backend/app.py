@@ -3,8 +3,10 @@ from backend.user_util import (
     create_user, check_user_credentials
 )
 import os
-from backend.models import db, Users
+from backend.models import db, Users, Posts, Comments, Likes
 from dotenv import load_dotenv
+from datetime import datetime
+import base64
 
 # load env variables
 load_dotenv()
@@ -34,6 +36,11 @@ def homepage():
 @app.get('/hobby')
 def hobby():
     return render_template('hobby.html', page='hobby')
+
+# forum page
+@app.get('/forum')
+def forum():
+    return render_template('forum.html', page='forum')
 
 # quiz
 @app.get('/quiz')
@@ -78,15 +85,12 @@ def login():
         user = check_user_credentials(email, password)
         if user:
             session["user_id"] = user.user_id
+            session["username"] = user.username
             return redirect(url_for("homepage"))  
         else:
             return render_template("login.html", error="Invalid credentials")
 
     return render_template("login.html", page='login')
-
-
-if __name__ == '__main__':
-    app.run(debug=True)
 
 @app.route('/logout')
 def logout():
@@ -154,7 +158,7 @@ def results():
                 "desc": "Explore the city while sketching scenes, buildings, and people."
             },
             {
-                "title": "Beginner’s Acrylic Painting Class",
+                "title": "Beginner's Acrylic Painting Class",
                 "when": "April 10, 5 PM – 7 PM",
                 "where": "Local Arts Center",
                 "desc": "Learn painting techniques with step-by-step guidance."
@@ -168,7 +172,7 @@ def results():
                 "desc": "A guided 3-mile hike with scenic sunset views and good company."
             },
             {
-                "title": "Beginner’s Birdwatching Walk",
+                "title": "Beginner's Birdwatching Walk",
                 "when": "April 13, 8 AM",
                 "where": "Willow Lake Nature Preserve",
                 "desc": "Bring binoculars and learn to identify local bird species with a park ranger."

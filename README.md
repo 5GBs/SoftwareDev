@@ -30,7 +30,7 @@ Yadhira Marcos-Avila
     ```bash
     python3 -m venv venv
     source venv/bin/activate    # for MacOS/Linux
-    venv\Scripts\activate # for Windows
+    source venv/Scripts/activate # for Windows
 
 4. **Install Dependencies**
     ```bash
