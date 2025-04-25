@@ -31,6 +31,7 @@ body {
     margin-inline: auto;
     margin-block: 0;
     display: flex;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -70,7 +71,7 @@ body {
     margin-block: 0;
   }
   
-  .auth-btn {
+.auth-btn {
     font-size: 14px;
     color: white;
     padding: 6px 12px;
@@ -80,17 +81,17 @@ body {
     transition: background-color 0.3s;
   }
   
-  .auth-btn:hover {
+.auth-btn:hover {
     background-color: #555;
   }
   
-  .auth-btn.signup {
+.auth-btn.signup {
     background-color: #ddd;
     color: #222;
     font-weight: bold;
   }
   
-  .auth-btn.signup:hover {
+.auth-btn.signup:hover {
     background-color: #bebebe;
   }
 /********************************************************/
