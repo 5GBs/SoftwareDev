@@ -211,7 +211,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error('Failed to fetch posts');
             }
             
-            const posts = await response.json();
+            const data = await response.json();
+            const posts = data.posts;
+            const userId = data.user_id;
             
             // Clear existing posts (except for the sample post if needed)
             const postsContainer = document.querySelector('.posts-container');
@@ -219,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Add posts to the container
             posts.forEach(post => {
-                const postElement = createPostElement(post);
+                const postElement = createPostElement(post, userId);
                 postsContainer.appendChild(postElement);
             });
         } catch (error) {
@@ -228,11 +230,12 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Create a post element
-    const createPostElement = (post) => {
+    const createPostElement = (post, userId) => {
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
         postDiv.setAttribute('data-post-category', post.category);
         postDiv.style.cssText = 'background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px; overflow: hidden;';
+        isAuthor = userId === post.author_id;
         
         // Format the date
         const postDate = new Date(post.creation_date);
@@ -249,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="post-author">${post.author_name}</span>
                     <span class="post-date">${formattedDate}</span>
                 </div>
-                <button class="action-button delete-button" data-post-id="${post.post_id}" style="margin-left: 50%; background: none; border: none; padding: 12px; cursor: pointer; transition: all 0.3s ease; color: #666;">Delete</button>
+                ${isAuthor ? `<button class="action-button delete-button" data-post-id="${post.post_id}" style="margin-left: 50%; background: none; border: none; padding: 12px; cursor: pointer; transition: all 0.3s ease; color: #666;">Delete</button>` : ``}
                 <h3 class="post-title" style="margin: 0 0 15px; color: #1B5E20;">${post.title}</h3>
             </div>
             
@@ -281,7 +284,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const shareButton = postDiv.querySelector('.share-button');
         const commentForm = postDiv.querySelector('.comment-form');
         
-        deleteButton.addEventListener('click', () => handleDelete(post.post_id));
+        if(deleteButton){
+            deleteButton.addEventListener('click', () => handleDelete(post.post_id));
+        }
         likeButton.addEventListener('click', () => handleLike(post.post_id, likeButton));
         commentButton.addEventListener('click', () => toggleComments(post.post_id));
         shareButton.addEventListener('click', () => handleShare(post.post_id));

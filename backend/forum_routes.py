@@ -47,7 +47,10 @@ def get_posts():
                 'category': post.category  # Ensure your Posts model has this field
             })
         
-        return jsonify(posts_list)
+        return jsonify({
+            'posts': posts_list,
+            'user_id': session.get('user_id')
+        })
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
