@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
 CREATE TABLE IF NOT EXISTS posts (
     post_id SERIAL PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
+    category VARCHAR(50) NOT NULL,
     description TEXT NOT NULL,
     picture BYTEA NOT NULL,
     creation_date TIMESTAMP NOT NULL,

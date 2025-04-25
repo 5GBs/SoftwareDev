@@ -206,3 +206,37 @@ def submit_comment():
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
+    
+# Delete a post
+@forum_routes.route('/delete-post', methods=['DELETE'])
+def delete_post():
+    if 'user_id' not in session:
+        return jsonify({"error": "user not logged in"}), 403
+    
+    try:
+        data = request.get_json()
+        post_id = data.get('post_id')
+
+        # Check if required field is provided
+        if not post_id:
+            return jsonify({"error": "Missing required field"}), 400
+        
+        
+        # Check if the post exists
+        post = Posts.query.get(post_id)
+        if not post:
+            return jsonify({"error": "Post not found"}), 404
+        
+        # Check if user is authorized to delete
+        user_id = session.get('user_id')
+        if user_id != post.author_id:
+            return jsonify({"error": "Not authorized to delete"}), 403
+
+        # Delete post from database
+        db.session.delete(post)
+        db.session.commit()
+
+        return jsonify({"message": "Post deleted successfully", "post_id": post_id})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500

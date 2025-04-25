@@ -239,6 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="post-author">${post.author_name}</span>
                     <span class="post-date">${formattedDate}</span>
                 </div>
+                <button class="action-button delete-button" data-post-id="${post.post_id}" style="margin-left: 50%; background: none; border: none; padding: 12px; cursor: pointer; transition: all 0.3s ease; color: #666;">Delete</button>
                 <h3 class="post-title" style="margin: 0 0 15px; color: #1B5E20;">${post.title}</h3>
             </div>
             
@@ -264,11 +265,13 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         // Add event listeners
+        const deleteButton = postDiv.querySelector('.delete-button');
         const likeButton = postDiv.querySelector('.like-button');
         const commentButton = postDiv.querySelector('.comment-button');
         const shareButton = postDiv.querySelector('.share-button');
         const commentForm = postDiv.querySelector('.comment-form');
         
+        deleteButton.addEventListener('click', () => handleDelete(post.post_id));
         likeButton.addEventListener('click', () => handleLike(post.post_id, likeButton));
         commentButton.addEventListener('click', () => toggleComments(post.post_id));
         shareButton.addEventListener('click', () => handleShare(post.post_id));
@@ -427,6 +430,30 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show feedback
         alert('Link copied to clipboard!');
+    };
+
+    // Handle delete button click
+    const handleDelete = async (postId) => {
+        try {
+            const response = await fetch('/forum/delete-post', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({post_id: postId})
+            });
+
+            const result = await response.json();
+
+            if(response.ok){
+                console.log(response);
+                fetchPosts();
+            } else {
+                alert(`Error: ${result.error}`);
+            }
+        } catch (error) {
+            console.error('Error deleting post:', error);
+        }
     };
     
     // Initialize by fetching posts
