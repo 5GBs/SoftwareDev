@@ -111,17 +111,18 @@
             </div>
             
             <div class="form-group">
-                <label for="post-image">Add an Image (Optional)</label>
+                <label for="post-image">Add an Image (Required)</label>
                 <div class="image-upload" id="image-upload-area">
                     <i class="fas fa-image"></i>
                     <p class="upload-text">Click to upload an image or drag and drop</p>
                     <input type="file" id="post-image" name="picture" accept="image/*" style="display: none;">
                 </div>
                 <img id="image-preview" class="image-preview" alt="Preview">
+                <p id="image-error" style="color: red; font-weight: bold; display: none;">Please upload an image for your post. Images are required.</p>
             </div>
             
             <div style="text-align: center;">
-                <button type="submit" class="submit-button" style="margin-top: 10px;">Post</button>
+                <button type="submit" class="submit-button" style="margin-top: 10px;">Post</button> 
             </div>
         </form>
     </section>

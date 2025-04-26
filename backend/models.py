@@ -28,6 +28,10 @@ class Posts(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     author = db.relationship('Users', backref='posts')
 
+    comments = db.relationship('Comments', backref='post', cascade="all, delete-orphan")
+    likes = db.relationship('Likes', backref='post', cascade="all, delete-orphan")
+
+
     def __repr__(self):
         return f'Posts({self.post_id}, {self.title}, {self.category}, {self.creation_date})'
     
@@ -42,7 +46,6 @@ class Comments(db.Model):
     author = db.relationship('Users', backref='comments')
 
     post_id = db.Column(db.Integer, db.ForeignKey('posts.post_id'), nullable=False)
-    post = db.relationship('Posts', backref='comments')
 
     def __repr__(self):
         return f'Comments({self.comment_id}, {self.content}, {self.creation_date})'
@@ -57,7 +60,6 @@ class Likes(db.Model):
     author = db.relationship('Users', backref='likes')
 
     post_id = db.Column(db.Integer, db.ForeignKey('posts.post_id'), nullable=False)
-    post = db.relationship('Posts', backref='likes')
 
     def __repr__(self):
         return f'Likes({self.like_id}, {self.author_id}, {self.post_id})'

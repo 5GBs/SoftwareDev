@@ -53,6 +53,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 alert('Please fill out all required fields');
                 return;
             }
+
+            // Add validation for image (make it mandatory)
+            if (!postImage) {
+                document.getElementById('image-error').style.display = 'block';
+                document.getElementById('image-upload-area').style.border = '2px solid red';
+                return;
+            } else {
+                document.getElementById('image-error').style.display = 'none';
+                document.getElementById('image-upload-area').style.border = '';
+            }
             
             // Create FormData object to handle file upload
             const formData = new FormData();
@@ -201,7 +211,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error('Failed to fetch posts');
             }
             
-            const posts = await response.json();
+            const data = await response.json();
+            const posts = data.posts;
+            const userId = data.user_id;
             
             // Clear existing posts (except for the sample post if needed)
             const postsContainer = document.querySelector('.posts-container');
@@ -209,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Add posts to the container
             posts.forEach(post => {
-                const postElement = createPostElement(post);
+                const postElement = createPostElement(post, userId);
                 postsContainer.appendChild(postElement);
             });
         } catch (error) {
@@ -218,11 +230,12 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Create a post element
-    const createPostElement = (post) => {
+    const createPostElement = (post, userId) => {
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
         postDiv.setAttribute('data-post-category', post.category);
         postDiv.style.cssText = 'background-color: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); margin-bottom: 20px; overflow: hidden;';
+        isAuthor = userId === post.author_id;
         
         // Format the date
         const postDate = new Date(post.creation_date);
@@ -239,6 +252,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="post-author">${post.author_name}</span>
                     <span class="post-date">${formattedDate}</span>
                 </div>
+                ${isAuthor ? `<button class="action-button delete-button" data-post-id="${post.post_id}" style="margin-left: 50%; background: none; border: none; padding: 12px; cursor: pointer; transition: all 0.3s ease; color: #666;">Delete</button>` : ``}
                 <h3 class="post-title" style="margin: 0 0 15px; color: #1B5E20;">${post.title}</h3>
             </div>
             
@@ -264,11 +278,15 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         
         // Add event listeners
+        const deleteButton = postDiv.querySelector('.delete-button');
         const likeButton = postDiv.querySelector('.like-button');
         const commentButton = postDiv.querySelector('.comment-button');
         const shareButton = postDiv.querySelector('.share-button');
         const commentForm = postDiv.querySelector('.comment-form');
         
+        if(deleteButton){
+            deleteButton.addEventListener('click', () => handleDelete(post.post_id));
+        }
         likeButton.addEventListener('click', () => handleLike(post.post_id, likeButton));
         commentButton.addEventListener('click', () => toggleComments(post.post_id));
         shareButton.addEventListener('click', () => handleShare(post.post_id));
@@ -427,6 +445,30 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Show feedback
         alert('Link copied to clipboard!');
+    };
+
+    // Handle delete button click
+    const handleDelete = async (postId) => {
+        try {
+            const response = await fetch('/forum/delete-post', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({post_id: postId})
+            });
+
+            const result = await response.json();
+
+            if(response.ok){
+                console.log(response);
+                fetchPosts();
+            } else {
+                alert(`Error: ${result.error}`);
+            }
+        } catch (error) {
+            console.error('Error deleting post:', error);
+        }
     };
     
     // Initialize by fetching posts
