@@ -21,10 +21,9 @@
                 <li><a href="{{ url_for('hobby') }}">Hobbies</a></li>
                 <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
                 <li><a href="{{ url_for('about_us') }}">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="auth-buttons">
-                {% if page in ['home', 'about-us'] %}
+                {% if page in ['home', 'about-us', 'terms-of-service', 'privacy-policy'] %}
                     {% if 'user_id' not in session %}
                         <a href="{{ url_for('login')}}" class="auth-btn login">Login</a>
                         <a href="{{ url_for('signup')}}" class="auth-btn signup">Sign Up</a>

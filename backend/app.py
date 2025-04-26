@@ -55,6 +55,17 @@ def quiz():
 def about_us():
     return render_template('about-us.html', page='about-us')
 
+# terms-of-service
+@app.get('/terms-of-service')
+def terms_of_service():
+    return render_template('terms-of-service.html', page='terms-of-service')
+
+# privacy-policy
+@app.get('/privacy-policy')
+def privacy_policy():
+    return render_template('privacy-policy.html', page='privacy-policy')
+
+
 # signup
 @app.route('/signup', methods=["GET", "POST"])
 def signup():

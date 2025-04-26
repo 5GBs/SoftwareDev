@@ -1,0 +1,55 @@
+<!-- Manny Campbell and Natalie Tepedino -->
+
+{% include 'navbar.html' %}
+
+        <!-- Header Section -->
+        <header class="header h-abus">
+            <div class="header-content">
+                <img src="{{ url_for('static', filename='images/Logo.webp') }}" alt="Hobby Logo" class="logo">
+                <h1 class="head-title">Terms of Service</h1>
+            </div>
+        </header>
+        
+        <!-- Terms of Service -->
+        <section class="abus">
+            <h2>Effective Date: April 25, 2025</h2>
+            <div class="abus-container">
+                <div class="abus-content">
+                    <h3 style="text-decoration: underline;">
+                        Welcome to Find My Hobby! By using our website, you agree to the following terms:
+                    </h3>
+                    <ol style="padding-left: 0; list-style-position: inside;"></ol>
+                        <li>
+                            <strong>Use of Service:</strong> You agree to use our service in a lawful manner. You may not use our service for any illegal or unauthorized purpose.
+                        </li>
+                        <li>
+                            <strong>User Content:</strong> You are responsible for any content you post or share. We reserve the right to remove content that violates these terms.
+                        </li>
+                        <li>
+                            <strong>Accounts:</strong> If you create an account, you are responsible for maintaining the security of your login information.
+                        </li>
+                        <li>
+                            <strong>Intellectual Property:</strong> All content on this site, unless uploaded by users, is owned by Find My Hobby and may not be copied or reused without permission.
+                        </li>
+                        <li>
+                            <strong>Termination:</strong> We may suspend or terminate your access at any time if we believe you have violated these terms.
+                        </li>
+                        <li>
+                            <strong>Changes to Terms:</strong> We may update these terms occasionally. Continued use of our service means you accept the new terms.
+                        </li>
+                        <li>
+                            <strong>Contact:</strong> If you have any questions, contact us at <a href="mailto:ntepedin@charlotte.edu">ntepedin@charlotte.edu</a>.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Find My Hobby. All rights reserved.</p>
+            <p><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a> | <a href="{{ url_for('terms_of_service') }}">Terms of Service</a></p>
+        </footer>
+
+    </body>
+</html>

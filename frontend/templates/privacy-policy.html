@@ -1,0 +1,72 @@
+<!-- Manny Campbell and Natalie Tepedino -->
+
+{% include 'navbar.html' %}
+
+<!-- Header Section -->
+<header class="header h-abus">
+    <div class="header-content">
+        <img src="{{ url_for('static', filename='images/Logo.webp') }}" alt="Hobby Logo" class="logo">
+        <h1 class="head-title">Privacy Policy</h1>
+    </div>
+</header>
+
+<!-- Privacy Policy Section -->
+<section class="abus">
+    <h2>Below is a detail explanation of our Privacy Policy:</h2>
+    <div class="abus-container">
+        <div class="abus-content">
+            <h3>1. Information We Collect</h3>
+            <p>We may collect the following types of information:</p>
+            <ul>
+                <li><strong>Personal Information:</strong> Username, email address, and password when you sign up.</li>
+                <li><strong>Hobby Preferences:</strong> Information about your hobbies and quiz results.</li>
+                <li><strong>Usage Data:</strong> Details about how you interact with our website.</li>
+                <li><strong>Device Information:</strong> Information about your device, such as IP address and browser type.</li>
+            </ul>
+
+            <h3>2. How We Use Your Information</h3>
+            <p>We use your information to:</p>
+            <ul>
+                <li>Provide personalized hobby recommendations.</li>
+                <li>Improve the functionality and user experience of our website.</li>
+                <li>Communicate with you about updates, features, or support.</li>
+                <li>Ensure the security of your account and our platform.</li>
+            </ul>
+
+            <h3>3. Sharing Your Information</h3>
+            <p>We do not sell or share your personal information with third parties, except in the following cases:</p>
+            <ul>
+                <li><strong>Service Providers:</strong> Trusted third-party services that help us operate our website.</li>
+                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights and users.</li>
+            </ul>
+
+            <h3>4. Cookies and Tracking</h3>
+            <p>We use cookies to enhance your browsing experience, track website usage, and remember your preferences. You can manage your cookie preferences through your browser settings.</p>
+
+            <h3>5. Data Security</h3>
+            <p>We take reasonable measures to protect your personal information from unauthorized access, loss, or misuse. However, no system is completely secure.</p>
+
+            <h3>6. Your Rights</h3>
+            <p>You have the right to access, update, or delete your personal information. To exercise these rights, contact us at <strong>support@findmyhobby.com</strong>.</p>
+
+            <h3>7. Changes to This Policy</h3>
+            <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with the updated effective date.</p>
+
+            <h3>8. Contact Us</h3>
+            <p>If you have any questions, contact us at:</p>
+            <ul>
+                <li><strong>Email:</strong> support@findmyhobby.com</li>
+                <li><strong>Address:</strong> 123 Hobby Lane, Charlotte, NC 28223</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>&copy; 2025 Find My Hobby. All rights reserved.</p>
+    <p><a href="{{ url_for('privacy_policy') }}">Privacy Policy</a> | <a href="{{ url_for('terms_of_service') }}">Terms of Service</a></p>
+</footer>
+
+</body>
+</html>
