@@ -38,8 +38,8 @@ def homepage():
 # hobby
 @app.get('/hobby')
 def hobby():
-    if 'user_id' not in session:
-        return render_template('signup.html', page='signup')
+    # if 'user_id' not in session:
+    #     return render_template('signup.html', page='signup')
     return render_template('hobby.html', page='hobby')
 
 # quiz
