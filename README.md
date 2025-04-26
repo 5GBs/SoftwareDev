@@ -59,7 +59,7 @@ Yadhira Marcos-Avila
     # You will need to edit this file (.env) to create a new database.
     ```
 
-7. **Install Homebreq (if not installed)**
+7. **Install Homebrew (if not installed)**
     ```bash
     # Open terminal and install
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -89,7 +89,7 @@ Yadhira Marcos-Avila
  9. **Create the database**
      ```bash
       # Create the database (schema inside)
-      createdb -U postgres findmyhobby
+      createdb findmyhobby
 
       # If creatb is not available:
       psql -U postgres
@@ -97,7 +97,7 @@ Yadhira Marcos-Avila
       \q
       
       # Verify the database
-      psql -U postgres -d findmyhobby
+      psql -d findmyhobby
 
       # List the tables within the database
       \dt  
