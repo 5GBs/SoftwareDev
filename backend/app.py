@@ -16,6 +16,16 @@ app = Flask(
     static_folder='../frontend/static',
     template_folder='../frontend/templates'
 )
+# import blueprints
+from routes import users_bp
+app.register_blueprint(users_bp)
+
+# Register secret for session management
+app.secret_key = os.getenv('SECRET')
+
+# TODO: insert DB connection 
+# app.config['SQLALCHEMY_DATABASE_URI'] = 
+
 
 # register blueprint routes
 app.register_blueprint(forum_routes, url_prefix='/forum')
