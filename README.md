@@ -28,7 +28,10 @@ Yadhira Marcos-Avila
 
 2. **Navigate to the Repo**
    ```bash
-   Navigate to the location of your file downloaded in step 1 (most likely titled 'SoftwareDev')
+   # Navigate to the location of your file downloaded in step 1 (most likely titled 'SoftwareDev')
+
+   # For example
+   cd SoftwareDev
    ```
 
 4. **Create and Activate a Virtual Environment**
@@ -50,7 +53,7 @@ Yadhira Marcos-Avila
 6. **Configure Environment Variables**
     ```bash
     # Create a new env file within the current folder 
-    # (should still be SoftwareDev) by running the above command:
+    # (should still be SoftwareDev) by running the command below:
     cp backend/.env.example .env
 
     # You will need to edit this file (.env) to create a new database.
