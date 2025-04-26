@@ -63,6 +63,8 @@ Yadhira Marcos-Avila
     ```bash
     # Open terminal and install
    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Remember your password! You will need it later.
    ``` 
 
 8. **Make sure PostgreSQL is running**
@@ -101,8 +103,21 @@ Yadhira Marcos-Avila
       \dt  
       ```
 
+11. **Exit the database**
+    ```bash
+    \q
+    ```
 
-10. **Finally, Run the App!**
+12. **Edit the .env file**
+    ```bash
+    # Navigate to the .env file
+    # Edit it so that the username is 'postgres' and the password is the one you used in step 7
+
+    DB_USER=postgres
+    DB_PASS= 'your password'
+    ```
+    
+13. **Finally, Run the App!**
     ```bash
     # Visit the localhost given in the terminal
     # (Most likely 'http://127.0.0.1:5000')
