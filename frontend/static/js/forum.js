@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Add posts to the container
             posts.forEach(post => {
-                const postElement = createPostElement(post, userId);
+                const postElement = createPostElement(post, userId, post.likes);
                 postsContainer.appendChild(postElement);
             });
         } catch (error) {
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // Create a post element
-    const createPostElement = (post, userId) => {
+    const createPostElement = (post, userId, likes) => {
         const postDiv = document.createElement('div');
         postDiv.className = 'post';
         postDiv.setAttribute('data-post-category', post.category);
@@ -283,6 +283,18 @@ document.addEventListener('DOMContentLoaded', function() {
         const commentButton = postDiv.querySelector('.comment-button');
         const shareButton = postDiv.querySelector('.share-button');
         const commentForm = postDiv.querySelector('.comment-form');
+
+        // Show if post is liked or not
+        (likes || []).forEach(like => {
+            if(like.author_id === userId){
+                likeButton.classList.add('liked');
+                if (likeButton.classList.contains('liked')) {
+                    likeButton.style.color = '#e91e63';
+                } else {
+                    likeButton.style.color = '#666';
+                }
+            }
+        });
         
         if(deleteButton){
             deleteButton.addEventListener('click', () => handleDelete(post.post_id));

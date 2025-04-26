@@ -44,7 +44,8 @@ def get_posts():
                 'creation_date': post.creation_date.isoformat(),
                 'author_id': post.author_id,
                 'author_name': author_name,
-                'category': post.category  # Ensure your Posts model has this field
+                'category': post.category,  # Ensure your Posts model has this field
+                'likes': [{'author_id': like.author_id} for like in post.likes]
             })
         
         return jsonify({
